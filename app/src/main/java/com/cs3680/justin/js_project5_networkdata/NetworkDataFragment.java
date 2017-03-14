@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by justi on 3/11/2017.
@@ -17,6 +19,8 @@ import java.io.IOException;
 public class NetworkDataFragment extends Fragment {
 
     private static final String TAG = "NetworkDataFragment";
+
+    private List<Planet> mPlanets = new ArrayList<>();
 
     public static NetworkDataFragment newInstance() {
         return new NetworkDataFragment();
@@ -38,17 +42,15 @@ public class NetworkDataFragment extends Fragment {
         return v;
     }
 
-    private class FetchItemsTask extends AsyncTask<Void,Void,Void> {
+    private class FetchItemsTask extends AsyncTask<Void,Void,List<Planet>> {
         @Override
-        protected Void doInBackground(Void... params) {
-            try {
-                String result = new PlanetFetcher()
-                        .getURLString("http://universe.tc.uvu.edu/cs3680/project/p5/planets.js");
-                Log.i(TAG, "Fetched contents of URL: " + result);
-            } catch (IOException ioe) {
-                Log.e(TAG, "Failed to fetch URL: ", ioe);
-            }
-            return null;
+        protected List<Planet> doInBackground(Void... params) {
+            return new PlanetFetcher().fetchItems();
+        }
+
+        @Override
+        protected void onPostExecute(List<Planet> planets) {
+            mPlanets = planets;
         }
     }
 }

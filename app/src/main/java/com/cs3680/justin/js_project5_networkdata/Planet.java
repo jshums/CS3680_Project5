@@ -1,6 +1,7 @@
 package com.cs3680.justin.js_project5_networkdata;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -8,21 +9,13 @@ import java.util.List;
  */
 
 public class Planet {
-    private static List<Satellite> mSatellites;
     private String mType;
     private String mName;
     private int mMoonCount;
     private double mDistanceFromSun;
-    private int mDiameterKm;
+    private double mDiameterKm;
 
-    public static List<Satellite> getSatellites() {
-        return mSatellites;
-    }
-
-    public static void setSatellites(List<Satellite> mSatellites) {
-        Planet.mSatellites = mSatellites;
-    }
-
+    List<Satellite> satellites = new ArrayList<>();
 
     public String getType() {
         return mType;
@@ -57,11 +50,13 @@ public class Planet {
         this.mDistanceFromSun = mDistanceFromSun;
     }
 
-    public int getDiameterKm() {
+    public double getDiameterKm() {
         return mDiameterKm;
     }
 
-    public void setDiameterKm(int mDiameterKm) {
+    public void setDiameterKm(double mDiameterKm) {
         this.mDiameterKm = mDiameterKm;
     }
+
+
 }

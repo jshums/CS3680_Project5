@@ -6,7 +6,7 @@ package com.cs3680.justin.js_project5_networkdata;
 
 public class Satellite {
     private String mName;
-    private int mDiameterKm;
+    private double mDiameterKm;
 
     public Satellite () {
 
@@ -21,11 +21,11 @@ public class Satellite {
         this.mName = mName;
     }
 
-    public int getDiameterKm() {
+    public double getDiameterKm() {
         return mDiameterKm;
     }
 
-    public void setDiameterKm(int mDiameterKm) {
+    public void setDiameterKm(double mDiameterKm) {
         this.mDiameterKm = mDiameterKm;
     }
 }
